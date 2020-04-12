@@ -7,22 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Hello World - SuperEpoch</title>
+<title>信息熵相关概念 - SuperEpoch</title>
 
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="机器学习中，绕不开的一个概念就是熵 (Entropy)，信息熵。信息熵常被用来作为一个系统的信息含量的量化指标，从而可以进一步用来作为系统方程优化的目标或者参数选择的判据。在决策树的生成过程中，就使用了熵来作为样本最优属性划分的判据。下面按照本人的理解来系统梳理一下有关熵的概念。 熵的定义是怎么来的？信息熵的定义公式：  并且规定 0log(0)&#x3D;00\log(0)&#x3D;00log(0)&#x3D;0。 首次看">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://superepoch.github.io/2020/04/03/hello-world/index.html">
+<meta property="og:title" content="信息熵相关概念">
+<meta property="og:url" content="https://superepoch.github.io/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="SuperEpoch">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="机器学习中，绕不开的一个概念就是熵 (Entropy)，信息熵。信息熵常被用来作为一个系统的信息含量的量化指标，从而可以进一步用来作为系统方程优化的目标或者参数选择的判据。在决策树的生成过程中，就使用了熵来作为样本最优属性划分的判据。下面按照本人的理解来系统梳理一下有关熵的概念。 熵的定义是怎么来的？信息熵的定义公式：  并且规定 0log(0)&#x3D;00\log(0)&#x3D;00log(0)&#x3D;0。 首次看">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://superepoch.github.io/gallery20200327/codes.jpg">
-<meta property="article:published_time" content="2020-04-02T19:21:19.633Z">
-<meta property="article:modified_time" content="2020-04-10T20:23:28.283Z">
+<meta property="og:image" content="https://superepoch.github.io/20200412/timearr.jpg">
+<meta property="article:published_time" content="2020-04-12T04:08:07.000Z">
+<meta property="article:modified_time" content="2020-04-12T05:06:15.778Z">
 <meta property="article:author" content="SuperEpoch">
+<meta property="article:tag" content="信息">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://superepoch.github.io/gallery20200327/codes.jpg">
+<meta name="twitter:image" content="https://superepoch.github.io/20200412/timearr.jpg">
 
 
 
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zenminsinlogo.svg" alt="Hello World" height="28">
+                <img src="/images/zenminsinlogo.svg" alt="信息熵相关概念" height="28">
             
             </a>
         </div>
@@ -138,30 +140,35 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery20200327/codes.jpg" alt="Hello World">
+            <img class="thumbnail" src="/20200412/timearr.jpg" alt="信息熵相关概念">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>Hello World
+                <i class="fas fa-angle-double-right"></i>信息熵相关概念
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-02T19:21:19.633Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-03</time>
+                <time class="level-item has-text-grey" datetime="2020-04-12T04:08:07.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-12</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-10T20:23:28.283Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-11</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T05:06:15.778Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-12</time>
                 
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">知识，计算机，机器学习，信息论</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 123 个字)
+                    5 分钟 读完 (大约 716 个字)
                 </span>
                 
                 
@@ -174,31 +181,39 @@
         </div>
         
         <div class="content">
-            <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <p>机器学习中，绕不开的一个概念就是<strong>熵 (Entropy)，</strong>信息熵。信息熵常被用来作为一个系统的信息含量的量化指标，从而可以进一步用来作为系统方程优化的目标或者参数选择的判据。在决策树的生成过程中，就使用了熵来作为样本最优属性划分的判据。下面按照本人的理解来系统梳理一下有关熵的概念。</p>
+<h1 id="熵的定义是怎么来的？"><a href="#熵的定义是怎么来的？" class="headerlink" title="熵的定义是怎么来的？"></a>熵的定义是怎么来的？</h1><p>信息熵的定义公式：</p>
+<img src="/20200412/entro1.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>并且规定 0log(0)=00\log(0)=00log(0)=0。</p>
+<p>首次看到这个定义，我感到莫名其妙，为什么熵要定义成这么复杂的形式，并且其中还出现了对数函数这种非常不直观的表述？</p>
+<h2 id="信息熵的三个性质"><a href="#信息熵的三个性质" class="headerlink" title="信息熵的三个性质"></a>信息熵的三个性质</h2><p>信息论之父克劳德·香农给出的信息熵的三个性质[1]：</p>
+<p>单调性，发生概率越高的事件，其携带的信息量越低；<br>非负性，信息熵可以看作为一种广度量，非负性是一种合理的必然；<br>累加性，即多随机事件同时发生存在的总不确定性的量度是可以表示为各事件不确定性的量度的和，这也是广度量的一种体现。<br>香农从数学上严格证明了满足上述三个条件的随机变量不确定性度量函数具有唯一形式</p>
+<img src="/20200412/entro1.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>其中的 CCC 为常数，我们将其归一化为 C=1C=1C=1 即得到了信息熵公式。</p>
+<h2 id="对信息熵三条性质的理解"><a href="#对信息熵三条性质的理解" class="headerlink" title="对信息熵三条性质的理解"></a>对信息熵三条性质的理解</h2><p>单调性说的是，事件发生的概率越低，其发生时所能给出的信息量越大。举一个极端的例子，“太阳从西边升起”所携带的信息量就远大于“太阳从东边升起”，因为后者是一个万年不变的事实，不用特意述说大家都知道；而前者是一个相当不可能发生的事情，如果发生了，那代表了太多的可能性，可能太阳系有重大变故，可能物理法则发生了变化，等等。从某种角度来考虑，单调性也暗含了一种对信息含量的先验假设，即默认某些事实是不含信息量的（默认事实其实也是一种信息，我理解的默认事实应该指的是概率分布），这其实是把默认情况的信息量定标为 0 了</p>
+<p>$$\begin{matrix}<br>1&amp;0&amp;0\<br>0&amp;1&amp;0\<br>0&amp;0&amp;1\<br>\end{matrix}$$<br>引用于: <a href="https://blog.csdn.net/am290333566/article/details/81187124">信息熵及其相关概念</a></p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="https://superepoch.github.io/2020/04/03/hello-world/">Hello World</a></li>
+            <li><strong>本文标题：</strong><a href="https://superepoch.github.io/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">信息熵相关概念</a></li>
             <li><strong>本文作者：</strong><a href="https://superepoch.github.io">SuperEpoch</a></li>
-            <li><strong>本文链接：</strong><a href="https://superepoch.github.io/2020/04/03/hello-world/">https://superepoch.github.io/2020/04/03/hello-world/</a></li>
-            <li><strong>发布时间：</strong>2020-04-03</li>
+            <li><strong>本文链接：</strong><a href="https://superepoch.github.io/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">https://superepoch.github.io/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</a></li>
+            <li><strong>发布时间：</strong>2020-04-12</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E4%BF%A1%E6%81%AF/" rel="tag">信息</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -241,13 +256,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/12/%E4%BA%BA%E7%B1%BB%E4%B8%96%E7%95%8C%E6%80%9D%E7%BB%B4%E4%B9%9D%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                <i class="level-item fas fa-chevron-left"></i>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/12/%E4%BA%BA%E7%B1%BB%E4%B8%96%E7%95%8C%E6%80%9D%E7%BB%B4%E4%B9%9D%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
                 <span class="level-item">人类世界思维九大模型</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -392,25 +407,17 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Quick-Start">
+        <a class="is-flex" href="#熵的定义是怎么来的？">
         <span class="has-mr-6">1</span>
-        <span>Quick Start</span>
+        <span>熵的定义是怎么来的？</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Create-a-new-post">
+        <a class="is-flex" href="#信息熵的三个性质">
         <span class="has-mr-6">1.1</span>
-        <span>Create a new post</span>
+        <span>信息熵的三个性质</span>
         </a></li><li>
-        <a class="is-flex" href="#Run-server">
+        <a class="is-flex" href="#对信息熵三条性质的理解">
         <span class="has-mr-6">1.2</span>
-        <span>Run server</span>
-        </a></li><li>
-        <a class="is-flex" href="#Generate-static-files">
-        <span class="has-mr-6">1.3</span>
-        <span>Generate static files</span>
-        </a></li><li>
-        <a class="is-flex" href="#Deploy-to-remote-sites">
-        <span class="has-mr-6">1.4</span>
-        <span>Deploy to remote sites</span>
+        <span>对信息熵三条性质的理解</span>
         </a></li></ul></li></ul>
             </div>
         </div>
@@ -435,7 +442,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zenminsinlogo.svg" alt="Hello World" height="28">
+                    <img src="/images/zenminsinlogo.svg" alt="信息熵相关概念" height="28">
                 
                 </a>
                 <p class="is-size-7">

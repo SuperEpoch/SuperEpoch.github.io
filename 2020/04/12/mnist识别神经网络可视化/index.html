@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://superepoch.github.io/20200412/mnistv.jpg">
 <meta property="article:published_time" content="2020-04-12T12:14:20.000Z">
-<meta property="article:modified_time" content="2020-04-12T16:02:09.794Z">
+<meta property="article:modified_time" content="2020-04-12T16:51:13.862Z">
 <meta property="article:author" content="SuperEpoch">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="人工神经网络">
@@ -155,7 +155,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-12T12:14:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-12</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T16:02:09.794Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T16:51:13.862Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
                 
                 
                 <div class="level-item">
@@ -168,7 +168,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 612 个字)
+                    4 分钟 读完 (大约 629 个字)
                 </span>
                 
                 
@@ -196,14 +196,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>,one_hot=True)    <span class="comment"># MNIST_data指的是存放数据的文件夹路径，one_hot=True 为采用one_hot的编码方式编码标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#load data</span></span><br><span class="line">train_X = mnist.train.images                <span class="comment">#训练集样本</span></span><br><span class="line">validation_X = mnist.validation.images      <span class="comment">#验证集样本</span></span><br><span class="line">test_X = mnist.test.images                  <span class="comment">#测试集样本</span></span><br><span class="line"><span class="comment">#labels</span></span><br><span class="line">train_Y = mnist.train.labels                <span class="comment">#训练集标签</span></span><br><span class="line">validation_Y = mnist.validation.labels      <span class="comment">#验证集标签</span></span><br><span class="line">test_Y = mnist.test.labels                  <span class="comment">#测试集标签</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_X.shape,train_Y.shape)          <span class="comment">#输出训练集样本和标签的大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据，例如训练集中第一个样本的内容和标签</span></span><br><span class="line"><span class="built_in">print</span>(train_X[0])       <span class="comment">#是一个包含784个元素且值在[0,1]之间的向量</span></span><br><span class="line"><span class="built_in">print</span>(train_Y[0])</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化样本，下面是输出了训练集中前20个样本</span></span><br><span class="line">fig, ax = plt.subplots(nrows=4,ncols=5,sharex=<span class="string">'all'</span>,sharey=<span class="string">'all'</span>)</span><br><span class="line">ax = ax.flatten()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(20):</span><br><span class="line">    img = train_X[i].reshape(28, 28)</span><br><span class="line">    ax[i].imshow(img,cmap=<span class="string">'Greys'</span>)</span><br><span class="line">ax[0].set_xticks([])</span><br><span class="line">ax[0].set_yticks([])</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(55000, 784) (55000, 10)        <span class="comment">#训练集样本和标签的大小</span></span><br><span class="line">第一个样本的内容输出较多，省略</span><br><span class="line">[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]   <span class="comment">#第一个样本的标签，one-hot编码，只有对应位置的值是1，其余都是0</span></span><br></pre></td></tr></table></figure>
-
+<p>mnist数据集神经网络训练:</p>
 <iframe src="//player.bilibili.com/player.html?aid=99264272&bvid=BV14741117FX&cid=169452292&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
 
 <iframe src="//player.bilibili.com/player.html?aid=17547136&bvid=BV1fW4118722&cid=28723672&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
 
+<p>神经网络可视化:</p>
 <iframe src="//player.bilibili.com/player.html?aid=82712576&bvid=BV1XJ411G7X7&cid=141500792&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
 
-<p><a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_download.html">参考材料</a></p>
+<p><a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_download.html">涉及材料</a></p>
 
         </div>
         
@@ -267,6 +268,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/13/%E7%90%86%E8%A7%A3lstm%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">理解lstm神经网络</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -341,7 +349,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        5
                     </p>
                 </a>
             </div>
@@ -361,7 +369,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        7
                     </p>
                 </a>
             </div>

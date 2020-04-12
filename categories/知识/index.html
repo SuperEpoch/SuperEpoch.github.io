@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类: 知识，计算机，机器学习，信息论 - SuperEpoch</title>
+<title>分类: 知识 - SuperEpoch</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="SuperEpoch">
-<meta property="og:url" content="https://superepoch.github.io/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/index.html">
+<meta property="og:url" content="https://superepoch.github.io/categories/%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="SuperEpoch">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://superepoch.github.io/images/og_image.png">
@@ -131,11 +131,92 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li class="is-active"><a href="#" aria-current="page">知识，计算机，机器学习，信息论</a></li>
+            <li class="is-active"><a href="#" aria-current="page">知识</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/" class="image is-7by1">
+            <img class="thumbnail" src="/20200412/mnistv.jpg" alt="mnist识别神经网络可视化">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/"><i class="fas fa-angle-double-right"></i>mnist识别神经网络可视化</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-12T12:14:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-12</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T12:41:57.291Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-12</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">神经网络可视化</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    4 分钟 读完 (大约 612 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>MNIST数据集是机器学习领域中非常经典的一个数据集，由60000个训练样本和10000个测试样本组成，每个样本都是一张28 * 28像素的灰度手写数字图片。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>官方网站 <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a><br>一共4个文件，训练集、训练集标签、测试集、测试集标签</p>
+<table>
+<tr><td>文件名称</td><td>大小</td><td>内容</td></tr>
+<tr><td>train-images-idx3-ubyte.gz</td><td>9,681 kb</td><td>55000张训练集，5000张验证集</td></tr>
+<tr><td>train-labels-idx1-ubyte.gz</td><td>29 kb</td><td>训练集图片对应的标签</td></tr>
+<tr><td>t10k-images-idx3-ubyte.gz</td><td>1,611 kb</td><td>10000张测试集</td></tr>
+<tr><td>t10k-labels-idx1-ubyte.gz</td><td>5 kb</td><td>测试集图片对应的标签</td></tr>
+</table>
+
+<h1 id="读入数据集"><a href="#读入数据集" class="headerlink" title="读入数据集"></a>读入数据集</h1><p>直接下载下来的数据是无法通过解压或者应用程序打开的，因为这些文件不是任何标准的图像格式而是以字节的形式进行存储的，所以必须编写程序来打开它。</p>
+<h1 id="使用TensorFlow进行解压"><a href="#使用TensorFlow进行解压" class="headerlink" title="使用TensorFlow进行解压"></a>使用TensorFlow进行解压</h1><p>使用TensorFlow中input_data.py脚本来读取数据及标签，使用这种方式时，可以不用事先下载好数据集，它会自动下载并存放到你指定的位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>,one_hot=True)    <span class="comment"># MNIST_data指的是存放数据的文件夹路径，one_hot=True 为采用one_hot的编码方式编码标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#load data</span></span><br><span class="line">train_X = mnist.train.images                <span class="comment">#训练集样本</span></span><br><span class="line">validation_X = mnist.validation.images      <span class="comment">#验证集样本</span></span><br><span class="line">test_X = mnist.test.images                  <span class="comment">#测试集样本</span></span><br><span class="line"><span class="comment">#labels</span></span><br><span class="line">train_Y = mnist.train.labels                <span class="comment">#训练集标签</span></span><br><span class="line">validation_Y = mnist.validation.labels      <span class="comment">#验证集标签</span></span><br><span class="line">test_Y = mnist.test.labels                  <span class="comment">#测试集标签</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_X.shape,train_Y.shape)          <span class="comment">#输出训练集样本和标签的大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据，例如训练集中第一个样本的内容和标签</span></span><br><span class="line"><span class="built_in">print</span>(train_X[0])       <span class="comment">#是一个包含784个元素且值在[0,1]之间的向量</span></span><br><span class="line"><span class="built_in">print</span>(train_Y[0])</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化样本，下面是输出了训练集中前20个样本</span></span><br><span class="line">fig, ax = plt.subplots(nrows=4,ncols=5,sharex=<span class="string">'all'</span>,sharey=<span class="string">'all'</span>)</span><br><span class="line">ax = ax.flatten()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(20):</span><br><span class="line">    img = train_X[i].reshape(28, 28)</span><br><span class="line">    ax[i].imshow(img,cmap=<span class="string">'Greys'</span>)</span><br><span class="line">ax[0].set_xticks([])</span><br><span class="line">ax[0].set_yticks([])</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(55000, 784) (55000, 10)        <span class="comment">#训练集样本和标签的大小</span></span><br><span class="line">第一个样本的内容输出较多，省略</span><br><span class="line">[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]   <span class="comment">#第一个样本的标签，one-hot编码，只有对应位置的值是1，其余都是0</span></span><br></pre></td></tr></table></figure>
+
+<iframe src="//player.bilibili.com/player.html?aid=99264272&bvid=BV14741117FX&cid=169452292&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+
+<iframe src="//player.bilibili.com/player.html?aid=17547136&bvid=BV1fW4118722&cid=28723672&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+
+<iframe src="//player.bilibili.com/player.html?aid=82712576&bvid=BV1XJ411G7X7&cid=141500792&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
+
+<p><a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_download.html">参考材料</a></p>
+
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card">
@@ -157,12 +238,12 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-12T04:08:07.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-12</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T12:39:56.763Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-12</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T12:41:35.597Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-12</time>
                 
                 
                 <div class="level-item">
                 <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">知识，计算机，机器学习，信息论</a>
+                <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BF%A1%E6%81%AF%E8%AE%BA/">信息论</a>
                 </div>
                 
                 
@@ -260,7 +341,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        6
                     </p>
                 </a>
             </div>
@@ -427,7 +508,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-12T12:14:20.000Z">2020-04-12</time></div>
                     <a href="/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mnist识别神经网络可视化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">知识，计算机，机器学习，神经网络可视化</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
                     </p>
                 </div>
             </div>
@@ -446,7 +527,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-12T04:08:07.000Z">2020-04-12</time></div>
                     <a href="/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">信息熵相关概念</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">知识，计算机，机器学习，信息论</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
                     </p>
                 </div>
             </div>
@@ -510,22 +591,22 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86/">
             <span class="level-start">
-                <span class="level-item">知识，计算机，机器学习，信息论</span>
+                <span class="level-item">知识</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
             <span class="level-start">
-                <span class="level-item">知识，计算机，机器学习，神经网络可视化</span>
+                <span class="level-item">计算机</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -561,7 +642,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-12T12:14:20.000Z">2020-04-12</time></div>
                     <a href="/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mnist识别神经网络可视化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">知识，计算机，机器学习，神经网络可视化</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
                     </p>
                 </div>
             </div>
@@ -580,7 +661,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-12T04:08:07.000Z">2020-04-12</time></div>
                     <a href="/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">信息熵相关概念</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">知识，计算机，机器学习，信息论</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
                     </p>
                 </div>
             </div>
@@ -644,22 +725,22 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86/">
             <span class="level-start">
-                <span class="level-item">知识，计算机，机器学习，信息论</span>
+                <span class="level-item">知识</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
             <span class="level-start">
-                <span class="level-item">知识，计算机，机器学习，神经网络可视化</span>
+                <span class="level-item">计算机</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

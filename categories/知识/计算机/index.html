@@ -159,7 +159,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-12T16:31:47.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-13</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T16:56:45.174Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T17:05:40.328Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
                 
                 
                 <div class="level-item">
@@ -226,9 +226,9 @@
 <h3 id="传入门"><a href="#传入门" class="headerlink" title="传入门"></a>传入门</h3><p>下一步是决定让多少新的信息加入到 cell 状态 中来。实现这个需要包括两个 步骤：首先，一个叫做“input gate layer ”的 sigmoid 层决定哪些信息需要更新；一个 tanh 层生成一个向量，也就是备选的用来更新的内容，Ct˜<br>Ct。在下一步，我们把这两部分联合起来，对 cell 的状态进行一个更新。</p>
 <img src="/20200413/a10.png" class="[class names]" title="[500] [500] " alt=" ">
 
-<p>在我们的语言模型的例子中，我们想把新的主语性别信息添加到 cell 状态中，来替换掉老的状态信息。<br>有了上述的结构，我们就能够更新 cell 状态了， 即把$ C_{t-1} $更新为 $C_{t} $。 从结构图中应该能一目了然， 首先我们把旧的状态 $C_{t-1} 和和 f_t 相乘，把一些不想保留的信息忘掉。然后加上相乘，把一些不想保留的信息忘掉。然后加上 i_t * \tilde{C_{t}} $。这部分信息就是我们要添加的新内容。</p>
+<p>在我们的语言模型的例子中，我们想把新的主语性别信息添加到 cell 状态中，来替换掉老的状态信息。<br>有了上述的结构，我们就能够更新 cell 状态了， 即把$ C_{t-1} $更新为 $C_{t} $。 从结构图中应该能一目了然， 首先我们把旧的状态 C_{t-1} 和和 f_t 相乘，把一些不想保留的信息忘掉。然后加上相乘，把一些不想保留的信息忘掉。然后加上 i_t * \tilde{C_{t}} 。这部分信息就是我们要添加的新内容。</p>
 <img src="/20200413/a11.png" class="[class names]" title="[500] [500] " alt=" ">
-<h3 id="输出门"><a href="#输出门" class="headerlink" title="输出门"></a>输出门</h3><p>最后，我们需要来决定输出什么值了。这个输出主要是依赖于 cell 的状态$ C_t$，但是又不仅仅依赖于 $C_t ，而是需要经过一个过滤的处理。首先，我们还是使用一个sigmoid层来（计算出）决定，而是需要经过一个过滤的处理。首先，我们还是使用一个sigmoid层来（计算出）决定 C_t 中的哪部分信息会被输出。接着，我们把中的哪部分信息会被输出。接着，我们把 C_t $通过一个 tanh 层（把数值都归到 -1 和 1 之间），然后把 tanh 层的输出和 sigmoid 层计算出来的权重相乘，这样就得到了最后输出的结果。</p>
+<h3 id="输出门"><a href="#输出门" class="headerlink" title="输出门"></a>输出门</h3><p>最后，我们需要来决定输出什么值了。这个输出主要是依赖于 cell 的状态$ C_t$，但是又不仅仅依赖于 C_t ，而是需要经过一个过滤的处理。首先，我们还是使用一个sigmoid层来（计算出）决定，而是需要经过一个过滤的处理。首先，我们还是使用一个sigmoid层来（计算出）决定 C_t 中的哪部分信息会被输出。接着，我们把中的哪部分信息会被输出。接着，我们把 C_t 通过一个 tanh 层（把数值都归到 -1 和 1 之间），然后把 tanh 层的输出和 sigmoid 层计算出来的权重相乘，这样就得到了最后输出的结果。</p>
 <p>在语言模型例子中，假设我们的模型刚刚接触了一个代词，接下来可能要输出一个动词，这个输出可能就和代词的信息相关了。比如说，这个动词应该采用单数形式还是复数的形式，那么我们就得把刚学到的和代词相关的信息都加入到 cell 状态中来，才能够进行正确的预测。</p>
 <img src="/20200413/a12.png" class="[class names]" title="[500] [500] " alt=" ">
 

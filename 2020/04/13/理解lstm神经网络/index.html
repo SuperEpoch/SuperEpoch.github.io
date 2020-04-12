@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://superepoch.github.io/20200413/a14.png">
 <meta property="article:published_time" content="2020-04-12T16:31:47.000Z">
-<meta property="article:modified_time" content="2020-04-12T17:05:40.328Z">
+<meta property="article:modified_time" content="2020-04-12T18:07:56.294Z">
 <meta property="article:author" content="SuperEpoch">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="人工神经网络">
@@ -158,7 +158,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-12T16:31:47.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-13</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T17:05:40.328Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T18:07:56.294Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
                 
                 
                 <div class="level-item">
@@ -171,7 +171,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    23 分钟 读完 (大约 3397 个字)
+                    23 分钟 读完 (大约 3398 个字)
                 </span>
                 
                 
@@ -187,6 +187,8 @@
             <p>（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）<br><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a></p>
 <h1 id="循环神经网络（RNNs"><a href="#循环神经网络（RNNs" class="headerlink" title="循环神经网络（RNNs)"></a>循环神经网络（RNNs)</h1><p>人们思考问题往往不是从零开始的。就好像你现在阅读这篇文章一样，你对每个词的理解都会依赖于你前面看到的一些词，而不是把你前面看的内容全部抛弃了，忘记了，再去理解这个单词。也就是说，人们的思维总是会有延续性的。</p>
 <p>传统的神经网络是做不到这样的延续性（它们没办法保留对前文的理解），这似乎成了它们一个巨大的缺陷。举个例子，在观看影片中，你想办法去对每一帧画面上正在发生的事情做一个分类理解。目前还没有明确的办法利用传统的网络把对影片中前面发生的事件添加进来帮助理解后面的画面。</p>
+<a id="more"></a>
+
 <p>但是，循环神经网络可以做到。在RNNs的网络中，有一个循环的操作，使得它们能够保留之前学习到的内容。</p>
 <img src="/20200413/a1.png" class="[class names]" title="[500] [500] " alt=" ">
 <p>在上图网络结构中，对于矩形块 A 的那部分，通过输入$ x_t （t时刻的特征向量），它会输出一个结果（t时刻的特征向量），它会输出一个结果 h_t $（t时刻的状态或者输出）。网络中的循环结构使得某个时刻的状态能够传到下一个时刻。（译者注：因为当前时刻的状态会作为下一时刻输入的一部分）</p>

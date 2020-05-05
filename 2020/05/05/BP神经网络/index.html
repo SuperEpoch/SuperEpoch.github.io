@@ -7,24 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>mnist识别神经网络可视化 - SuperEpoch</title>
+<title>BP神经网络 - SuperEpoch</title>
 
 
-    <meta name="description" content="MNIST数据集是机器学习领域中非常经典的一个数据集，由60000个训练样本和10000个测试样本组成，每个样本都是一张28 * 28像素的灰度手写数字图片。">
+    <meta name="description" content="一 前言      最近在看深度学习的东西，一开始看的吴恩达的UFLDL教程，有中文版就直接看了，后来发现有些地方总是不是很明确，又去看英文版，然后又找了些资料看，才发现，中文版的译者在翻译的时候会对省略的公式推导过程进行补充，但是补充的又是错的，难怪觉得有问题。       反向传播法其实是神经网络的基础了，但是很多人在学的时候总是会遇到一些问题，或者看到大篇的公式觉得好像很难就退缩了，其实不难">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mnist识别神经网络可视化">
-<meta property="og:url" content="https://superepoch.github.io/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/index.html">
+<meta property="og:title" content="BP神经网络">
+<meta property="og:url" content="https://superepoch.github.io/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="SuperEpoch">
-<meta property="og:description" content="MNIST数据集是机器学习领域中非常经典的一个数据集，由60000个训练样本和10000个测试样本组成，每个样本都是一张28 * 28像素的灰度手写数字图片。">
+<meta property="og:description" content="一 前言      最近在看深度学习的东西，一开始看的吴恩达的UFLDL教程，有中文版就直接看了，后来发现有些地方总是不是很明确，又去看英文版，然后又找了些资料看，才发现，中文版的译者在翻译的时候会对省略的公式推导过程进行补充，但是补充的又是错的，难怪觉得有问题。       反向传播法其实是神经网络的基础了，但是很多人在学的时候总是会遇到一些问题，或者看到大篇的公式觉得好像很难就退缩了，其实不难">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://superepoch.github.io/20200412/mnistv.jpg">
-<meta property="article:published_time" content="2020-04-12T12:14:20.000Z">
-<meta property="article:modified_time" content="2020-04-12T18:13:14.903Z">
+<meta property="og:image" content="https://superepoch.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-05-05T14:38:31.000Z">
+<meta property="article:modified_time" content="2020-05-05T14:59:29.461Z">
 <meta property="article:author" content="SuperEpoch">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="人工神经网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://superepoch.github.io/20200412/mnistv.jpg">
+<meta name="twitter:image" content="https://superepoch.github.io/images/og_image.png">
 
 
 
@@ -82,7 +80,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/zenminsinlogo.svg" alt="mnist识别神经网络可视化" height="28">
+                <img src="/images/zenminsinlogo.svg" alt="BP神经网络" height="28">
             
             </a>
         </div>
@@ -138,37 +136,26 @@
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/20200412/mnistv.jpg" alt="mnist识别神经网络可视化">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>mnist识别神经网络可视化
+                <i class="fas fa-angle-double-right"></i>BP神经网络
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-12T12:14:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-12</time>
+                <time class="level-item has-text-grey" datetime="2020-05-05T14:38:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-12T18:13:14.903Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-05T14:59:29.461Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-05</time>
                 
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">人工神经网络</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 630 个字)
+                    12 分钟 读完 (大约 1763 个字)
                 </span>
                 
                 
@@ -181,53 +168,85 @@
         </div>
         
         <div class="content">
-            <p>MNIST数据集是机器学习领域中非常经典的一个数据集，由60000个训练样本和10000个测试样本组成，每个样本都是一张28 * 28像素的灰度手写数字图片。</p>
-<a id="more"></a>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>官方网站 <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a><br>一共4个文件，训练集、训练集标签、测试集、测试集标签</p>
-<table>
-<tr><td>文件名称</td><td>大小</td><td>内容</td></tr>
-<tr><td>train-images-idx3-ubyte.gz</td><td>9,681 kb</td><td>55000张训练集，5000张验证集</td></tr>
-<tr><td>train-labels-idx1-ubyte.gz</td><td>29 kb</td><td>训练集图片对应的标签</td></tr>
-<tr><td>t10k-images-idx3-ubyte.gz</td><td>1,611 kb</td><td>10000张测试集</td></tr>
-<tr><td>t10k-labels-idx1-ubyte.gz</td><td>5 kb</td><td>测试集图片对应的标签</td></tr>
-</table>
+            <p>一 前言<br>      最近在看深度学习的东西，一开始看的吴恩达的UFLDL教程，有中文版就直接看了，后来发现有些地方总是不是很明确，又去看英文版，然后又找了些资料看，才发现，中文版的译者在翻译的时候会对省略的公式推导过程进行补充，但是补充的又是错的，难怪觉得有问题。<br>       反向传播法其实是神经网络的基础了，但是很多人在学的时候总是会遇到一些问题，或者看到大篇的公式觉得好像很难就退缩了，其实不难，就是一个链式求导法则反复用。如果不想看公式，可以直接把数值带进去，实际的计算一下，体会一下这个过程之后再来推导公式，这样就会觉得很容易了。</p>
+<p>二、简单的神经网络<br>　　说到神经网络，大家看到这个图应该不陌生：<br>    <img src="/20200505/a1.png" class="[class names]" title="[500] [500] " alt=" "><br>　　这是典型的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层，Layer L3是隐含层，我们现在手里有一堆数据{x1,x2,x3,…,xn},输出也是一堆数据{y1,y2,y3,…,yn},现在要他们在隐含层做某种变换，让你把数据灌进去后得到你期望的输出。如果你希望你的输出和原始输入一样，那么就是最常见的自编码模型（Auto-Encoder）。</p>
+<pre><code>可能有人会问，为什么要输入输出都一样呢？有什么用啊？其实应用挺广的，在图像识别，文本分类等等都会用到，我会专门再写一篇Auto-Encoder的文章来说明，包括一些变种之类的。如果你的输出和原始输入不一样，那么就是很常见的人工神经网络了，相当于让原始数据通过一个映射来得到我们想要的输出数据，也就是我们今天要讲的话题。</code></pre><p>三、前向传播<br>　　本文直接举一个例子，带入数值演示反向传播法的过程，公式的推导等到下次写Auto-Encoder的时候再写，其实也很简单，感兴趣的同学可以自己推导下试试。</p>
+<p>3.1 初始化一个网络<br>　　假设，你有这样一个网络层：</p>
+<img src="/20200505/a2.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>第一层是输入层，包含两个神经元i1，i2，和截距项b1；第二层是隐含层，包含两个神经元h1,h2和截距项b2，第三层是输出o1,o2，每条线上标的wi是层与层之间连接的权重，激活函数我们默认为sigmoid函数。</p>
+<p>　　现在对他们赋上初值，如下图：</p>
+<img src="/20200505/a3.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>　　其中，输入数据  i1=0.05，i2=0.10;<br>　　　　　输出数据 o1=0.01,o2=0.99;<br>　　　　　初始权重  w1=0.15,w2=0.20,w3=0.25,w4=0.30;<br>　　　　　　　　　  w5=0.40,w6=0.45,w7=0.50,w8=0.55</p>
+<p>　　目标：给出输入数据i1,i2(0.05和0.10)，使输出尽可能与原始输出o1,o2(0.01和0.99)接近。</p>
+<p>3.2 Step 1 前向传播<br>3.2.1.输入层—-&gt;隐含层：<br>　　计算神经元h1的输入加权和：</p>
+<img src="/20200505/a4.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>神经元h1的输出o1:(此处用到激活函数为sigmoid函数)：</p>
+<img src="/20200505/a5.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>同理，可计算出神经元h2的输出o2：</p>
+<img src="/20200505/a6.png" class="[class names]" title="[500] [500] " alt=" ">
 
-<h1 id="读入数据集"><a href="#读入数据集" class="headerlink" title="读入数据集"></a>读入数据集</h1><p>直接下载下来的数据是无法通过解压或者应用程序打开的，因为这些文件不是任何标准的图像格式而是以字节的形式进行存储的，所以必须编写程序来打开它。</p>
-<h1 id="使用TensorFlow进行解压"><a href="#使用TensorFlow进行解压" class="headerlink" title="使用TensorFlow进行解压"></a>使用TensorFlow进行解压</h1><p>使用TensorFlow中input_data.py脚本来读取数据及标签，使用这种方式时，可以不用事先下载好数据集，它会自动下载并存放到你指定的位置。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>,one_hot=True)    <span class="comment"># MNIST_data指的是存放数据的文件夹路径，one_hot=True 为采用one_hot的编码方式编码标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#load data</span></span><br><span class="line">train_X = mnist.train.images                <span class="comment">#训练集样本</span></span><br><span class="line">validation_X = mnist.validation.images      <span class="comment">#验证集样本</span></span><br><span class="line">test_X = mnist.test.images                  <span class="comment">#测试集样本</span></span><br><span class="line"><span class="comment">#labels</span></span><br><span class="line">train_Y = mnist.train.labels                <span class="comment">#训练集标签</span></span><br><span class="line">validation_Y = mnist.validation.labels      <span class="comment">#验证集标签</span></span><br><span class="line">test_Y = mnist.test.labels                  <span class="comment">#测试集标签</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_X.shape,train_Y.shape)          <span class="comment">#输出训练集样本和标签的大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据，例如训练集中第一个样本的内容和标签</span></span><br><span class="line"><span class="built_in">print</span>(train_X[0])       <span class="comment">#是一个包含784个元素且值在[0,1]之间的向量</span></span><br><span class="line"><span class="built_in">print</span>(train_Y[0])</span><br><span class="line"></span><br><span class="line"><span class="comment">#可视化样本，下面是输出了训练集中前20个样本</span></span><br><span class="line">fig, ax = plt.subplots(nrows=4,ncols=5,sharex=<span class="string">'all'</span>,sharey=<span class="string">'all'</span>)</span><br><span class="line">ax = ax.flatten()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(20):</span><br><span class="line">    img = train_X[i].reshape(28, 28)</span><br><span class="line">    ax[i].imshow(img,cmap=<span class="string">'Greys'</span>)</span><br><span class="line">ax[0].set_xticks([])</span><br><span class="line">ax[0].set_yticks([])</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>3.2.2.隐含层—-&gt;输出层：<br>　　计算输出层神经元o1和o2的值：</p>
+<img src="/20200505/a7.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a8.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>这样前向传播的过程就结束了，我们得到输出值为[0.75136079 , 0.772928465]，与实际值[0.01 , 0.99]相差还很远，现在我们对误差进行反向传播，更新权值，重新计算输出。</p>
+<p>四、反向传播<br>4.1 计算总误差<br>总误差：(square error)</p>
+<img src="/20200505/a9.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>但是有两个输出，所以分别计算o1和o2的误差，总误差为两者之和：</p>
+<img src="/20200505/a10.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a11.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a12.png" class="[class names]" title="[500] [500] " alt=" ">
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(55000, 784) (55000, 10)        <span class="comment">#训练集样本和标签的大小</span></span><br><span class="line">第一个样本的内容输出较多，省略</span><br><span class="line">[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]   <span class="comment">#第一个样本的标签，one-hot编码，只有对应位置的值是1，其余都是0</span></span><br></pre></td></tr></table></figure>
-<p>mnist数据集神经网络训练:</p>
-<iframe src="//player.bilibili.com/player.html?aid=99264272&bvid=BV14741117FX&cid=169452292&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
-
-<iframe src="//player.bilibili.com/player.html?aid=17547136&bvid=BV1fW4118722&cid=28723672&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
-
-<p>神经网络可视化:</p>
-<iframe src="//player.bilibili.com/player.html?aid=82712576&bvid=BV1XJ411G7X7&cid=141500792&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe>
-
-<p><a href="http://www.tensorfly.cn/tfdoc/tutorials/mnist_download.html">涉及材料</a></p>
+<p>4.2 隐含层—-&gt;输出层的权值更新：<br>以权重参数w5为例，如果我们想知道w5对整体误差产生了多少影响，可以用整体误差对w5求偏导求出：（链式法则）</p>
+<img src="/20200505/a13.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>下面的图可以更直观的看清楚误差是怎样反向传播的：</p>
+<img src="/20200505/a14.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>现在我们来分别计算每个式子的值：<br>计算</p>
+<img src="/20200505/a15.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a16.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>计算</p>
+<img src="/20200505/a17.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a18.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>（这一步实际上就是对sigmoid函数求导，比较简单，可以自己推导一下）</p>
+<p>计算</p>
+<img src="/20200505/a19.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a20.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>最后三者相乘：</p>
+<img src="/20200505/a21.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>这样我们就计算出整体误差E(total)对w5的偏导值。</p>
+<p>回过头来再看看上面的公式，我们发现：</p>
+<img src="/20200505/a22.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>为了表达方便，用来表示输出层的误差：</p>
+<img src="/20200505/a23.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>因此，整体误差E(total)对w5的偏导公式可以写成：</p>
+<p>如果输出层误差计为负的话，也可以写成：</p>
+<p>最后我们来更新w5的值（调整策略就是梯度下降）：</p>
+<p>（其中，是学习速率，这里我们取0.5）<br>同理，可更新w6,w7,w8:</p>
+<p>4.3 隐含层—-&gt;隐含层的权值更新：<br>　方法其实与上面说的差不多，但是有个地方需要变一下，在上文计算总误差对w5的偏导时，是从out(o1)—-&gt;net(o1)—-&gt;w5,但是在隐含层之间的权值更新时，是out(h1)—-&gt;net(h1)—-&gt;w1,而out(h1)会接受E(o1)和E(o2)两个地方传来的误差，所以这个地方两个都要计算。</p>
+<img src="/20200505/b1.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>计算</p>
+<p>计算</p>
+<p>同理，计算出：</p>
+<p>两者相加得到总值：</p>
+<p>再计算</p>
+<p>再计算</p>
+<p>最后，三者相乘：</p>
+<p> 为了简化公式，用sigma(h1)表示隐含层单元h1的误差：</p>
+<p>最后，更新w1的权值（继续用梯度下降）：</p>
+<p>同理，额可更新w2,w3,w4的权值：</p>
+<p>这样误差反向传播法就完成了，最后我们再把更新的权值重新计算，不停地迭代，在这个例子中第一次迭代之后，总误差E(total)由0.298371109下降至0.291027924。<br>迭代10000次后，总误差为0.000035085，输出为<a href="原输入为[0.01,0.99]">0.015912196,0.984065734</a>,证明效果还是不错的。</p>
+<p>实现代码请参见此文末尾：<a href="http://www.cnblogs.com/charlotte77/p/5629865.html">http://www.cnblogs.com/charlotte77/p/5629865.html</a></p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="https://superepoch.github.io/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">mnist识别神经网络可视化</a></li>
+            <li><strong>本文标题：</strong><a href="https://superepoch.github.io/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">BP神经网络</a></li>
             <li><strong>本文作者：</strong><a href="https://superepoch.github.io">SuperEpoch</a></li>
-            <li><strong>本文链接：</strong><a href="https://superepoch.github.io/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/">https://superepoch.github.io/2020/04/12/mnist%E8%AF%86%E5%88%AB%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96/</a></li>
-            <li><strong>发布时间：</strong>2020-04-12</li>
+            <li><strong>本文链接：</strong><a href="https://superepoch.github.io/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">https://superepoch.github.io/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</a></li>
+            <li><strong>发布时间：</strong>2020-05-05</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">人工神经网络</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
-                </div>
-            </div>
-        </div>
         
         
         
@@ -270,17 +289,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/13/%E7%90%86%E8%A7%A3lstm%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">理解lstm神经网络</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/">
-                <span class="level-item">信息熵相关概念</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/13/%E7%90%86%E8%A7%A3lstm%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                <span class="level-item">理解lstm神经网络</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -421,29 +433,6 @@
     
         
 
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content" style="max-height:calc(100vh - 22px);overflow:scroll">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#下载">
-        <span class="has-mr-6">1</span>
-        <span>下载</span>
-        </a></li><li>
-        <a class="is-flex" href="#读入数据集">
-        <span class="has-mr-6">2</span>
-        <span>读入数据集</span>
-        </a></li><li>
-        <a class="is-flex" href="#使用TensorFlow进行解压">
-        <span class="has-mr-6">3</span>
-        <span>使用TensorFlow进行解压</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
-
 
     
     
@@ -463,7 +452,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/zenminsinlogo.svg" alt="mnist识别神经网络可视化" height="28">
+                    <img src="/images/zenminsinlogo.svg" alt="BP神经网络" height="28">
                 
                 </a>
                 <p class="is-size-7">

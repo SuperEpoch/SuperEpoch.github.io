@@ -129,6 +129,120 @@
     
 <div class="card">
     
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fas fa-angle-double-right"></i>BP神经网络</a>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-05T14:38:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-05</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-05T14:59:29.461Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-05</time>
+                
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1763 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>一 前言<br>      最近在看深度学习的东西，一开始看的吴恩达的UFLDL教程，有中文版就直接看了，后来发现有些地方总是不是很明确，又去看英文版，然后又找了些资料看，才发现，中文版的译者在翻译的时候会对省略的公式推导过程进行补充，但是补充的又是错的，难怪觉得有问题。<br>       反向传播法其实是神经网络的基础了，但是很多人在学的时候总是会遇到一些问题，或者看到大篇的公式觉得好像很难就退缩了，其实不难，就是一个链式求导法则反复用。如果不想看公式，可以直接把数值带进去，实际的计算一下，体会一下这个过程之后再来推导公式，这样就会觉得很容易了。</p>
+<p>二、简单的神经网络<br>　　说到神经网络，大家看到这个图应该不陌生：<br>    <img src="/20200505/a1.png" class="[class names]" title="[500] [500] " alt=" "><br>　　这是典型的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层，Layer L3是隐含层，我们现在手里有一堆数据{x1,x2,x3,…,xn},输出也是一堆数据{y1,y2,y3,…,yn},现在要他们在隐含层做某种变换，让你把数据灌进去后得到你期望的输出。如果你希望你的输出和原始输入一样，那么就是最常见的自编码模型（Auto-Encoder）。</p>
+<pre><code>可能有人会问，为什么要输入输出都一样呢？有什么用啊？其实应用挺广的，在图像识别，文本分类等等都会用到，我会专门再写一篇Auto-Encoder的文章来说明，包括一些变种之类的。如果你的输出和原始输入不一样，那么就是很常见的人工神经网络了，相当于让原始数据通过一个映射来得到我们想要的输出数据，也就是我们今天要讲的话题。</code></pre><p>三、前向传播<br>　　本文直接举一个例子，带入数值演示反向传播法的过程，公式的推导等到下次写Auto-Encoder的时候再写，其实也很简单，感兴趣的同学可以自己推导下试试。</p>
+<p>3.1 初始化一个网络<br>　　假设，你有这样一个网络层：</p>
+<img src="/20200505/a2.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>第一层是输入层，包含两个神经元i1，i2，和截距项b1；第二层是隐含层，包含两个神经元h1,h2和截距项b2，第三层是输出o1,o2，每条线上标的wi是层与层之间连接的权重，激活函数我们默认为sigmoid函数。</p>
+<p>　　现在对他们赋上初值，如下图：</p>
+<img src="/20200505/a3.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>　　其中，输入数据  i1=0.05，i2=0.10;<br>　　　　　输出数据 o1=0.01,o2=0.99;<br>　　　　　初始权重  w1=0.15,w2=0.20,w3=0.25,w4=0.30;<br>　　　　　　　　　  w5=0.40,w6=0.45,w7=0.50,w8=0.55</p>
+<p>　　目标：给出输入数据i1,i2(0.05和0.10)，使输出尽可能与原始输出o1,o2(0.01和0.99)接近。</p>
+<p>3.2 Step 1 前向传播<br>3.2.1.输入层—-&gt;隐含层：<br>　　计算神经元h1的输入加权和：</p>
+<img src="/20200505/a4.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>神经元h1的输出o1:(此处用到激活函数为sigmoid函数)：</p>
+<img src="/20200505/a5.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>同理，可计算出神经元h2的输出o2：</p>
+<img src="/20200505/a6.png" class="[class names]" title="[500] [500] " alt=" ">
+
+<p>3.2.2.隐含层—-&gt;输出层：<br>　　计算输出层神经元o1和o2的值：</p>
+<img src="/20200505/a7.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a8.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>这样前向传播的过程就结束了，我们得到输出值为[0.75136079 , 0.772928465]，与实际值[0.01 , 0.99]相差还很远，现在我们对误差进行反向传播，更新权值，重新计算输出。</p>
+<p>四、反向传播<br>4.1 计算总误差<br>总误差：(square error)</p>
+<img src="/20200505/a9.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>但是有两个输出，所以分别计算o1和o2的误差，总误差为两者之和：</p>
+<img src="/20200505/a10.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a11.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a12.png" class="[class names]" title="[500] [500] " alt=" ">
+
+<p>4.2 隐含层—-&gt;输出层的权值更新：<br>以权重参数w5为例，如果我们想知道w5对整体误差产生了多少影响，可以用整体误差对w5求偏导求出：（链式法则）</p>
+<img src="/20200505/a13.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>下面的图可以更直观的看清楚误差是怎样反向传播的：</p>
+<img src="/20200505/a14.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>现在我们来分别计算每个式子的值：<br>计算</p>
+<img src="/20200505/a15.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a16.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>计算</p>
+<img src="/20200505/a17.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a18.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>（这一步实际上就是对sigmoid函数求导，比较简单，可以自己推导一下）</p>
+<p>计算</p>
+<img src="/20200505/a19.png" class="[class names]" title="[500] [500] " alt=" ">
+<img src="/20200505/a20.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>最后三者相乘：</p>
+<img src="/20200505/a21.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>这样我们就计算出整体误差E(total)对w5的偏导值。</p>
+<p>回过头来再看看上面的公式，我们发现：</p>
+<img src="/20200505/a22.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>为了表达方便，用来表示输出层的误差：</p>
+<img src="/20200505/a23.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>因此，整体误差E(total)对w5的偏导公式可以写成：</p>
+<p>如果输出层误差计为负的话，也可以写成：</p>
+<p>最后我们来更新w5的值（调整策略就是梯度下降）：</p>
+<p>（其中，是学习速率，这里我们取0.5）<br>同理，可更新w6,w7,w8:</p>
+<p>4.3 隐含层—-&gt;隐含层的权值更新：<br>　方法其实与上面说的差不多，但是有个地方需要变一下，在上文计算总误差对w5的偏导时，是从out(o1)—-&gt;net(o1)—-&gt;w5,但是在隐含层之间的权值更新时，是out(h1)—-&gt;net(h1)—-&gt;w1,而out(h1)会接受E(o1)和E(o2)两个地方传来的误差，所以这个地方两个都要计算。</p>
+<img src="/20200505/b1.png" class="[class names]" title="[500] [500] " alt=" ">
+<p>计算</p>
+<p>计算</p>
+<p>同理，计算出：</p>
+<p>两者相加得到总值：</p>
+<p>再计算</p>
+<p>再计算</p>
+<p>最后，三者相乘：</p>
+<p> 为了简化公式，用sigma(h1)表示隐含层单元h1的误差：</p>
+<p>最后，更新w1的权值（继续用梯度下降）：</p>
+<p>同理，额可更新w2,w3,w4的权值：</p>
+<p>这样误差反向传播法就完成了，最后我们再把更新的权值重新计算，不停地迭代，在这个例子中第一次迭代之后，总误差E(total)由0.298371109下降至0.291027924。<br>迭代10000次后，总误差为0.000035085，输出为<a href="原输入为[0.01,0.99]">0.015912196,0.984065734</a>,证明效果还是不错的。</p>
+<p>实现代码请参见此文末尾：<a href="http://www.cnblogs.com/charlotte77/p/5629865.html">http://www.cnblogs.com/charlotte77/p/5629865.html</a></p>
+
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
     <div class="card-image">
         <a href="/2020/04/13/%E7%90%86%E8%A7%A3lstm%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="image is-7by1">
             <img class="thumbnail" src="/20200413/a14.png" alt="理解lstm神经网络">
@@ -536,7 +650,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </a>
             </div>
@@ -648,6 +762,17 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PyTorch中文文档</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">pytorch-cn.readthedocs.io</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -675,6 +800,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
@@ -699,6 +835,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BP神经网络">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T14:38:31.000Z">2020-05-05</time></div>
+                    <a href="/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BP神经网络</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -771,25 +926,6 @@
                     <a href="/2020/04/12/%E4%BA%BA%E7%B1%BB%E4%B8%96%E7%95%8C%E6%80%9D%E7%BB%B4%E4%B9%9D%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="title has-link-black-ter is-size-6 has-text-weight-normal">人类世界思维九大模型</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%84%9F%E6%82%9F/">感悟</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/03/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery20200327/codes.jpg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-02T19:21:19.633Z">2020-04-03</time></div>
-                    <a href="/2020/04/03/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -895,6 +1031,25 @@
         
         <article class="media">
             
+            <a href="/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BP神经网络">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T14:38:31.000Z">2020-05-05</time></div>
+                    <a href="/2020/05/05/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">BP神经网络</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/04/13/%E7%90%86%E8%A7%A3lstm%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/20200413/a14.png" alt="理解lstm神经网络">
@@ -964,25 +1119,6 @@
                     <a href="/2020/04/12/%E4%BA%BA%E7%B1%BB%E4%B8%96%E7%95%8C%E6%80%9D%E7%BB%B4%E4%B9%9D%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="title has-link-black-ter is-size-6 has-text-weight-normal">人类世界思维九大模型</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/">知识</a> / <a class="has-link-grey -link" href="/categories/%E7%9F%A5%E8%AF%86/%E6%84%9F%E6%82%9F/">感悟</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/04/03/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery20200327/codes.jpg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-02T19:21:19.633Z">2020-04-03</time></div>
-                    <a href="/2020/04/03/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
